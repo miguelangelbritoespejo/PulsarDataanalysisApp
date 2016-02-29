@@ -18,7 +18,7 @@ public class ConexionBasedeDatos {
     public Connection conexion(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            cn = DriverManager.getConnection("jdbc:mysql://localhost/sistema","root","123456");
+            cn = DriverManager.getConnection("jdbc:mysql://45.32.89.150/admin_dataanalysis","admin_pulsarda","65894uJmmf");
             System.out.println("Se conectó correctamente");
         } catch (Exception ex) {
          //catch (ClassNotFoundException | SQLException ex) {
