@@ -9,7 +9,7 @@ import Vista.VentanaLogin;
 
 /**
  *
- * @author David
+ * @author Caca
  */
 public class ClasePrincipal {
 
