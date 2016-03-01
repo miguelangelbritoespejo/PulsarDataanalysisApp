@@ -13,7 +13,7 @@ import Vista.VentanaLogin;
  */
 public class ClasePrincipal {
 
-    /**
+    /** caca
      * @param args the command line arguments
      */
     public static void main(String[] args) {
