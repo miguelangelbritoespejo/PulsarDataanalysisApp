@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Vista.Formulario1;
 import Vista.VentanaLogin;
 
 /**
@@ -20,6 +21,8 @@ public class ClasePrincipal {
         // TODO code application logic here
         VentanaLogin ventanaIngreso = new VentanaLogin ();
         ventanaIngreso.show();
+        Formulario1 prueba = new Formulario1 ();
+        prueba.show();
         
     }
     

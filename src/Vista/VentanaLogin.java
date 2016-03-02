@@ -149,7 +149,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
         if ("admin".equals(txtUsuario.getText()) && "1234".equals(txtClave.getText())){
-            PantallaPrincipal ventana = new PantallaPrincipal();
+            VentanaFormulario ventana = new VentanaFormulario();
             ventana.show();
             this.setVisible(false);
             this.dispose();
