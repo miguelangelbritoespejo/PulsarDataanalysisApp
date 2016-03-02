@@ -10,11 +10,11 @@ import Vista.VentanaLogin;
 
 /**
  *
- * @author Caca
+ * @author DGNV
  */
 public class ClasePrincipal {
 
-    /** caca
+    /** DGNV
      * @param args the command line arguments
      */
     public static void main(String[] args) {
