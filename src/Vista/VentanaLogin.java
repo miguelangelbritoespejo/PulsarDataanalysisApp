@@ -152,6 +152,7 @@ public class VentanaLogin extends javax.swing.JFrame {
             VentanaFormulario ventana = new VentanaFormulario();
             ventana.NombredeUsuario(txtUsuario.getText());
             ventana.show();    
+            ventana.show();
             this.setVisible(false);
             this.dispose();
         }

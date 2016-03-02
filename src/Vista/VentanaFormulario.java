@@ -27,14 +27,13 @@ public class VentanaFormulario extends javax.swing.JFrame {
         this.setSize(880,700); // se setea la dimensión de la ventana que tiene el formulario
         obtenerHoraFecha(); //se llama a la función para mostrar la fecha y la hora
         Formulario1 form = new Formulario1(); 
-        spFormulario.setViewportView(form); // se coloca dentro del un frame scrolleable el formulario
-        
+        spFormulario.setViewportView(form); // se coloca dentro del un frame scrolleable el formulario   
     }
 
     public void NombredeUsuario(String nombre){
         lblUsuario.setText(nombre);
     }
-    
+                  
     public void obtenerHoraFecha(){   
         Thread clock = new Thread(){
             public void run(){
@@ -52,7 +51,7 @@ public class VentanaFormulario extends javax.swing.JFrame {
                     else{lblMes.setText(Integer.toString(cal.get(Calendar.MONTH)));}                 
                     lblAno.setText(Integer.toString(cal.get(Calendar.YEAR)));
                     try {
-                        sleep (900);
+                        sleep (1000);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(VentanaFormulario.class.getName()).log(Level.SEVERE, null, ex);
                     }

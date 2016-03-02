@@ -5,15 +5,16 @@
  */
 package Modelo;
 
+import Vista.Formulario1;
 import Vista.VentanaLogin;
 
 /**
  *
- * @author David
+ * @author DGNV
  */
 public class ClasePrincipal {
 
-    /**
+    /** DGNV
      * @param args the command line arguments
      */
     public static void main(String[] args) {
