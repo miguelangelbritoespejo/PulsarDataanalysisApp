@@ -5,6 +5,12 @@
  */
 package Vista;
 
+import static java.lang.Thread.sleep;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author David
@@ -14,10 +20,41 @@ public class VentanaFormulario extends javax.swing.JFrame {
     /**
      * Creates new form VentanaFormulario
      */
+    
     public VentanaFormulario() {
         initComponents();
+        this.setSize(880,700); // se setea la dimensión de la ventana que tiene el formulario
+        obtenerHoraFecha(); //se llama a la función para mostrar la fecha y la hora
+        Formulario1 form = new Formulario1(); 
+        spFormulario.setViewportView(form); // se coloca dentro del un frame scrolleable el formulario
     }
 
+    public void obtenerHoraFecha(){   
+        Thread clock = new Thread(){
+            public void run(){
+                for (;;){
+                    Calendar cal = new GregorianCalendar();
+                    if(cal.get(Calendar.HOUR_OF_DAY)<10){ lblHora.setText("0"+Integer.toString(cal.get(Calendar.HOUR_OF_DAY)));}
+                    else{lblHora.setText(Integer.toString(cal.get(Calendar.HOUR_OF_DAY)));}    
+                    if(cal.get(Calendar.MINUTE)<10){ lblMinuto.setText("0"+Integer.toString(cal.get(Calendar.MINUTE)));}
+                    else{lblMinuto.setText(Integer.toString(cal.get(Calendar.MINUTE)));}
+                    if(cal.get(Calendar.SECOND)<10){ lblSegundo.setText("0"+Integer.toString(cal.get(Calendar.SECOND)));}
+                    else{lblSegundo.setText(Integer.toString(cal.get(Calendar.SECOND)));}
+                    if(cal.get(Calendar.DAY_OF_MONTH)<10){ lblDia.setText("0"+Integer.toString(cal.get(Calendar.DAY_OF_MONTH)));}
+                    else{lblDia.setText(Integer.toString(cal.get(Calendar.DAY_OF_MONTH)));}    
+                    if(cal.get(Calendar.MONTH)<10){ lblMes.setText("0"+Integer.toString(cal.get(Calendar.MONTH)));}
+                    else{lblMes.setText(Integer.toString(cal.get(Calendar.MONTH)));}                 
+                    lblAno.setText(Integer.toString(cal.get(Calendar.YEAR)));
+                    try {
+                        sleep (1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(VentanaFormulario.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+        clock.start();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,6 +65,7 @@ public class VentanaFormulario extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel7 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
@@ -42,8 +80,7 @@ public class VentanaFormulario extends javax.swing.JFrame {
         lblMes = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         lblAno = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        spFormulario = new javax.swing.JScrollPane();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -91,11 +128,6 @@ public class VentanaFormulario extends javax.swing.JFrame {
         jLabel11.setText("/");
 
         lblAno.setText("0000");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("CLARO - CUESTIONARIO EMPRESAS (SVA) \n\nBuenos días / tardes soy ________ entrevistador/a de DATANALISIS,\nempresa de investigación de mercados.  Estamos haciendo una encuesta\nsobre servicios de internet a diferentes empresas en todo el país \ny quisiera hacerle algunas preguntas.\n\nSus respuestas serán estrictamente confidenciales y serán usadas \npara obtener datos estadísticos de toda la población. Le ruego que \nsus respuestas sean concretas y sobre todo muy honestas.\n\nPROVEEDOR DE INTERNET\n\n1. ¿Qué empresa o empresas le proveen actualmente el servicio de \nInternet? (R.M.)\n\nClaro\t\t\t\t\nMovistar\t\t\nCNT – Easynet\t\t\nEtapa\t\t\t\nPunto net\t\t\nNetlife\t\t\t\nOnnet\t\t\t\nPanchonet\t\t\nTv Cable\t\t\nInteractive\t\t\nTelconet\t\nOtro (s), cuál (es): __________________________\n(E: CONTINUE SOLO SI ENTREVISTADO ES O FUE USUARIO DE CLARO, CASO \nCONTRARIO REGISTRE EN DATOS DE CLASIFICACIÓN Y TERMINE LA ENTREVISTA)\n\n\n2. ¿Hace cuánto tiempo son clientes del servicio de Internet de \nClaro?  (R.U.)\n\n   En años: __________\n\n\n3. ¿En la escala del 1 al 5 siendo 1 Muy malo y 5 Muy Bueno, como \npercibe Ud. la amabilidad y cortesía de la gente de CLARO que en \nalguna ocasión les atendieron por alguna situación relacionada al \nservicio de Internet de su empresa? (R.U.)\n\n\nMuy malo   Malo   Aceptable   Bueno   Muy Bueno\t\n   1\t    2\t      3\t        4\t  5\t");
-        jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Grabar");
 
@@ -158,12 +190,13 @@ public class VentanaFormulario extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel10)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -175,7 +208,7 @@ public class VentanaFormulario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
+                        .addComponent(spFormulario)
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -245,7 +278,7 @@ public class VentanaFormulario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE))
+                    .addComponent(spFormulario))
                 .addContainerGap())
         );
 
@@ -305,6 +338,7 @@ public class VentanaFormulario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -321,10 +355,8 @@ public class VentanaFormulario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -337,5 +369,6 @@ public class VentanaFormulario extends javax.swing.JFrame {
     private javax.swing.JLabel lblMinuto;
     private javax.swing.JLabel lblSegundo;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JScrollPane spFormulario;
     // End of variables declaration//GEN-END:variables
 }
