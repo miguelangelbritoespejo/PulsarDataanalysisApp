@@ -22,13 +22,19 @@ public class VentanaFormulario extends javax.swing.JFrame {
      */
     
     public VentanaFormulario() {
+        
         initComponents();
         this.setSize(880,700); // se setea la dimensión de la ventana que tiene el formulario
         obtenerHoraFecha(); //se llama a la función para mostrar la fecha y la hora
         Formulario1 form = new Formulario1(); 
         spFormulario.setViewportView(form); // se coloca dentro del un frame scrolleable el formulario
+        
     }
 
+    public void NombredeUsuario(String nombre){
+        lblUsuario.setText(nombre);
+    }
+    
     public void obtenerHoraFecha(){   
         Thread clock = new Thread(){
             public void run(){
@@ -46,7 +52,7 @@ public class VentanaFormulario extends javax.swing.JFrame {
                     else{lblMes.setText(Integer.toString(cal.get(Calendar.MONTH)));}                 
                     lblAno.setText(Integer.toString(cal.get(Calendar.YEAR)));
                     try {
-                        sleep (1000);
+                        sleep (900);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(VentanaFormulario.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -82,7 +88,7 @@ public class VentanaFormulario extends javax.swing.JFrame {
         lblAno = new javax.swing.JLabel();
         spFormulario = new javax.swing.JScrollPane();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
@@ -96,6 +102,7 @@ public class VentanaFormulario extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
 
         jLabel7.setText("jLabel7");
 
@@ -131,7 +138,7 @@ public class VentanaFormulario extends javax.swing.JFrame {
 
         jButton1.setText("Grabar");
 
-        jButton2.setText("Guardar");
+        btnGuardar.setText("Guardar");
 
         jButton3.setText("Siguiente");
 
@@ -171,7 +178,7 @@ public class VentanaFormulario extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
+                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(18, 18, 18)
@@ -200,6 +207,13 @@ public class VentanaFormulario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -211,9 +225,10 @@ public class VentanaFormulario extends javax.swing.JFrame {
                         .addComponent(spFormulario)
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jSeparator2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -274,10 +289,12 @@ public class VentanaFormulario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalir)
+                        .addGap(0, 203, Short.MAX_VALUE))
                     .addComponent(spFormulario))
                 .addContainerGap())
         );
@@ -301,6 +318,12 @@ public class VentanaFormulario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -338,9 +361,10 @@ public class VentanaFormulario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

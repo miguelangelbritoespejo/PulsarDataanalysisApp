@@ -150,7 +150,8 @@ public class VentanaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         if ("admin".equals(txtUsuario.getText()) && "1234".equals(txtClave.getText())){
             VentanaFormulario ventana = new VentanaFormulario();
-            ventana.show();
+            ventana.NombredeUsuario(txtUsuario.getText());
+            ventana.show();    
             this.setVisible(false);
             this.dispose();
         }
