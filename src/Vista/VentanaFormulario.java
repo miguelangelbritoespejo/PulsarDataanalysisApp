@@ -28,9 +28,10 @@ public class VentanaFormulario extends javax.swing.JFrame {
      * Creates new form VentanaFormulario
      */
     ConexionBasedeDatos con = new ConexionBasedeDatos();
-    Connection cn = con.conexion();
+    public Connection cn;
     Formulario1 form = new Formulario1(); 
     public VentanaFormulario() {
+        this.cn = con.conexion();
         
         initComponents();
         this.setSize(880,700); // se setea la dimensión de la ventana que tiene el formulario
@@ -79,7 +80,8 @@ public class VentanaFormulario extends javax.swing.JFrame {
             }
         }
     }
-                  
+     
+     
     public void obtenerHoraFecha(){   
         Thread clock = new Thread(){
             public void run(){
@@ -192,6 +194,11 @@ public class VentanaFormulario extends javax.swing.JFrame {
         });
 
         jButton3.setText("Siguiente");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -399,27 +406,43 @@ public class VentanaFormulario extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        System.out.println(form.Resultado1()); // impresión de prueba
-        System.out.println(lblUsuario.getText()); // impresión de prueba
-        String tabla = lblUsuario.getText();
+        
+//        System.out.println(form.Resultado1()); // impresión de prueba
+//        System.out.println(lblUsuario.getText()); // impresión de prueba
+        String comando, nom,ape,ced,tel,mail,rs1,rs2,rs3;
+        nom=txtNombre.getText(); ape=txtApellido.getText(); ced=txtCedula.getText();tel=txtTelefono.getText();
+        mail=txtEmail.getText();rs1=form.Resultado1();rs2=form.Resultado2();rs3=form.Resultado3();
         try {
-            PreparedStatement pps = cn.prepareStatement("INSERT INTO "+tabla+" (Nombre ,Apellido , Cedula ,Telefono ,Email , Respuesta1 , Respuesta2 , Respuesta3) VALUES (?,?,?,?,?,?,?,?)");
-            pps.setString(1, txtNombre.getText());
-            pps.setString(2, txtApellido.getText());
-            pps.setString(3, txtCedula.getText());
-            pps.setString(4, txtTelefono.getText());
-            pps.setString(5, txtEmail.getText());
-            pps.setString(6, form.Resultado1());
-            pps.setString(7, form.Resultado2());
-            pps.setString(8, form.Resultado3());
+            PreparedStatement pps = cn.prepareStatement("INSERT INTO "+lblUsuario.getText()+" (Nombre ,Apellido , Cedula ,Telefono ,Email , Respuesta1 , Respuesta2 , Respuesta3) VALUES ('"+nom+"','"+ape+"','"+ced+"','"+tel+"','"+mail+"','"+rs1+"','"+rs2+"','"+rs3+"')");
+//            pps.setString(1, nom);
+//            pps.setString(2, ape);
+//            pps.setString(3, ced);
+//            pps.setString(4, tel);
+//            pps.setString(5, mail);
+//            pps.setString(6, rs1);
+//            pps.setString(7, rs2);
+//            pps.setString(8, rs3);
+            
+//            comando=pps.toString();
+//            pps = cn.prepareStatement(comando.substring(47,comando.length()));
+//            System.out.println(comando.substring(47,comando.length()));
             pps.executeUpdate();
             JOptionPane.showMessageDialog(null,"Datos guardados");
         } catch (SQLException ex) {
             Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null,"No se pudo guardar los datos");
         }
-                          
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            PreparedStatement pps = cn.prepareStatement("INSERT INTO "+lblUsuario.getText()+" (Nombre ,Apellido , Cedula ,Telefono ,Email , Respuesta1 , Respuesta2 , Respuesta3) VALUES ('José','Torres','1118547893','0997041215','jose@hotmail.com','Claro','2','Aceptable')");
+            pps.executeUpdate();
+            // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(VentanaFormulario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
