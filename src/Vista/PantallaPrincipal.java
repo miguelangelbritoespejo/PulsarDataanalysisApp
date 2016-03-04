@@ -30,7 +30,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      */
     ConexionBasedeDatos con = new ConexionBasedeDatos();
     Connection cn = con.conexion();
-    Calendar cal = new GregorianCalendar();
+    
     
     public PantallaPrincipal() {
         initComponents();
@@ -91,7 +91,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btnGuardar = new javax.swing.JToggleButton();
         btnSalir = new javax.swing.JToggleButton();
-        lblsegundo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         txtCedulaConsulta = new javax.swing.JTextField();
@@ -136,8 +135,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        lblsegundo.setText("jLabel9");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -170,8 +167,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                             .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblsegundo)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -197,9 +192,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(lblsegundo))
+                .addComponent(btnGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir)
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -427,7 +420,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lblsegundo;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtApellidoConsulta;
     private javax.swing.JTextField txtCedula;

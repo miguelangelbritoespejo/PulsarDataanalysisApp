@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import javax.swing.ButtonModel;
+
 /**
  *
  * @author David
@@ -34,8 +36,81 @@ public class Formulario1 extends javax.swing.JPanel {
         bgCalidad.add(rbCalidad3);
         bgCalidad.add(rbCalidad4);
         bgCalidad.add(rbCalidad5);
+        
+    }
+    
+    public String Resultado1(){
+        String res="ninguna";
+        if(rbClaro.isSelected()){
+            res=rbClaro.getText();
+        }
+        else if (rbCnt.isSelected()){
+            res=rbCnt.getText();
+        }
+        else if (rbEtapa.isSelected()){
+            res=rbEtapa.getText();
+        }
+        else if (rbInteractive.isSelected()){
+            res=rbInteractive.getText();
+        }
+        else if (rbMovistar.isSelected()){
+            res=rbMovistar.getText();
+        }
+        else if (rbNetlife.isSelected()){
+            res=rbNetlife.getText();
+        }
+        else if (rbOnnet.isSelected()){
+            res=rbOnnet.getText();
+        }
+        else if (rbOtros.isSelected()){
+            res=txtOtros.getText();
+        }
+        else if (rbPanchonet.isSelected()){
+            res=rbPanchonet.getText();
+        }
+        else if (rbPuntonet.isSelected()){
+            res=rbPuntonet.getText();
+        }
+        else if (rbTelconet.isSelected()){
+            res=rbTelconet.getText();
+        }
+        else if (rbTvcable.isSelected()){
+            res=rbTvcable.getText();
+        }
+        else{
+            res="ninguno";
+        }
+        return res;
     }
 
+    public String Resultado2(){
+        String res;
+        res=txtTiempo.getText();
+        return res;
+    }
+    
+    public String Resultado3(){
+        String res="ninguno";
+        if(rbCalidad1 .isSelected()){
+            res="Muy malo";
+        }
+        else if (rbCalidad2.isSelected()){
+            res="Malo";
+        }
+        else if (rbCalidad3.isSelected()){
+            res="Aceptable";
+        }
+        else if (rbCalidad4.isSelected()){
+            res="Bueno";
+        }
+        else if (rbCalidad5.isSelected()){
+            res="Muy Bueno";
+        }
+        else{
+            res="ninguno";
+        }
+        return res;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,12 +142,12 @@ public class Formulario1 extends javax.swing.JPanel {
         rbInteractive = new javax.swing.JRadioButton();
         rbTelconet = new javax.swing.JRadioButton();
         rbOtros = new javax.swing.JRadioButton();
-        jTextField6 = new javax.swing.JTextField();
+        txtOtros = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtTiempo = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -206,11 +281,11 @@ public class Formulario1 extends javax.swing.JPanel {
                                             .addGroup(jPanel3Layout.createSequentialGroup()
                                                 .addComponent(rbOtros)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(txtOtros, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -241,8 +316,7 @@ public class Formulario1 extends javax.swing.JPanel {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(rbCalidad5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(rbCalidad5))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
@@ -289,7 +363,7 @@ public class Formulario1 extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbNetlife)
                     .addComponent(rbOtros)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtOtros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -299,7 +373,7 @@ public class Formulario1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -364,8 +438,6 @@ public class Formulario1 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JRadioButton rbCalidad1;
     private javax.swing.JRadioButton rbCalidad2;
     private javax.swing.JRadioButton rbCalidad3;
@@ -384,5 +456,7 @@ public class Formulario1 extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbPuntonet;
     private javax.swing.JRadioButton rbTelconet;
     private javax.swing.JRadioButton rbTvcable;
+    private javax.swing.JTextField txtOtros;
+    private javax.swing.JTextField txtTiempo;
     // End of variables declaration//GEN-END:variables
 }
