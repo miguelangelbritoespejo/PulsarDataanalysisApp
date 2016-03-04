@@ -111,6 +111,74 @@ public class Formulario1 extends javax.swing.JPanel {
         }
         return res;
     }
+    
+    public void Busqueda1(String boton){
+        if(null != boton)switch (boton) {
+            case "Claro":
+                rbClaro.setSelected(true);
+                break;
+            case "Cnt":
+                rbCnt.setSelected(true);
+                break;
+            case "Etapa":
+                rbEtapa.setSelected(true);
+                break;
+            case "Interactive":
+                rbInteractive.setSelected(true);
+                break;
+            case "Movistar":
+                rbMovistar.setSelected(true);
+                break;
+            case "Netlife":
+                rbNetlife.setSelected(true);
+                break;
+            case "Onnet":
+                rbOnnet.setSelected(true);
+                break;
+            case "Panchonet":
+                rbPanchonet.setSelected(true);
+                break;
+            case "Puntonet":
+                rbPuntonet.setSelected(true);
+                break;
+            case "Telconet":
+                rbTelconet.setSelected(true);
+                break;
+            case "Tvcable":
+                rbTvcable.setSelected(true);
+                break;
+            default:
+                rbOtros.setSelected(true);
+                txtOtros.setText(boton);
+                break;
+        }
+    }
+    
+    public void Busqueda2(String respuesta){
+        txtTiempo.setText(respuesta);
+    }
+    
+    public void Busqueda3(String boton){
+        if(null != boton)switch (boton) {
+            case "Muy malo":
+                rbCalidad1.setSelected(true);
+                break;
+            case "Malo":
+                rbCalidad2.setSelected(true);
+                break;
+            case "Aceptable":
+                rbCalidad3.setSelected(true);
+                break;
+            case "Bueno":
+                rbCalidad4.setSelected(true);
+                break;
+            case "Muy bueno":
+                rbCalidad5.setSelected(true);
+                break;
+            default:
+                break;
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

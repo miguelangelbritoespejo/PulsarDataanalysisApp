@@ -194,11 +194,6 @@ public class VentanaFormulario extends javax.swing.JFrame {
         });
 
         jButton3.setText("Siguiente");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -402,6 +397,41 @@ public class VentanaFormulario extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
+        String cedula;
+        cedula=JOptionPane.showInputDialog(this, "Ingrese el número de cédula","Consulta",JOptionPane.INFORMATION_MESSAGE);
+        String datos[]=new String[8];
+        for (int i=0;i<8;i++){
+            datos[i]=" ";
+        }
+        String sql="SELECT * FROM "+lblUsuario.getText()+" WHERE CEDULA = '"+cedula+"'";
+        Statement st;
+        
+        
+        try {
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            System.out.println(sql);
+            while(rs.next()){
+                datos[0]=rs.getString(1);
+                datos[1]=rs.getString(2);
+                datos[2]=rs.getString(3);
+                datos[3]=rs.getString(4);
+                datos[4]=rs.getString(5);
+                datos[5]=rs.getString(6);
+                datos[6]=rs.getString(7);
+                datos[7]=rs.getString(8);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        txtNombre.setText(datos[0]);
+        txtApellido.setText(datos[1]);
+        txtCedula.setText(datos[2]);
+        txtTelefono.setText(datos[3]);
+        txtEmail.setText(datos[4]);
+        form.Busqueda1(datos[5]);
+        form.Busqueda2(datos[6]);
+        form.Busqueda3(datos[7]);
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -433,16 +463,6 @@ public class VentanaFormulario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"No se pudo guardar los datos");
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
-            PreparedStatement pps = cn.prepareStatement("INSERT INTO "+lblUsuario.getText()+" (Nombre ,Apellido , Cedula ,Telefono ,Email , Respuesta1 , Respuesta2 , Respuesta3) VALUES ('José','Torres','1118547893','0997041215','jose@hotmail.com','Claro','2','Aceptable')");
-            pps.executeUpdate();
-            // TODO add your handling code here:
-        } catch (SQLException ex) {
-            Logger.getLogger(VentanaFormulario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
